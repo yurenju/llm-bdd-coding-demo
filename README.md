@@ -15,6 +15,10 @@ Through practical experience, I discovered that coding LLM assistants perform si
 
 The project uses Cucumber's Gherkin syntax to define acceptance criteria, but unlike traditional Cucumber implementations, there's no need to write step definitions or glue code. Instead, an LLM (Claude in this example) interprets the Gherkin scenarios and executes them through browser automation via MCP.
 
+## Demo
+
+Watch a demonstration of this approach in action: [LLM-BDD Coding Demo](https://youtu.be/WvGY_Jcm_kY)
+
 ## Prerequisites
 
 - Claude Code installed and configured
