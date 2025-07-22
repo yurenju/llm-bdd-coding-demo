@@ -1,94 +1,94 @@
-# 產品需求文件 (PRD) - 簡易 Todo Web App
+# Product Requirements Document (PRD) - Simple Todo Web App
 
-## 介紹/概述
+## Introduction/Overview
 
-本專案旨在使用 Vite + React + TypeScript 建立一個極簡的個人待辦事項管理應用程式。此應用程式專注於提供最基本且必要的功能，讓使用者能夠快速記錄和管理日常待辦事項，無需複雜的設定或學習曲線。
+This project aims to build a minimalist personal todo management application using Vite + React + TypeScript. The application focuses on providing the most basic and essential features, allowing users to quickly record and manage daily todos without complex setup or learning curves.
 
-## 目標
+## Objectives
 
-1. 提供一個簡單直觀的介面，讓使用者能在 5 秒內開始使用
-2. 確保所有待辦事項資料安全地儲存在本地瀏覽器中
-3. 實現零延遲的使用者互動體驗
-4. 保持程式碼簡潔，便於維護和理解
+1. Provide a simple and intuitive interface that users can start using within 5 seconds
+2. Ensure all todo data is safely stored in the local browser
+3. Achieve zero-latency user interaction experience
+4. Keep the code clean and easy to maintain and understand
 
-## 使用者故事
+## User Stories
 
-1. 作為一個使用者，我想要新增待辦事項，以便記錄需要完成的任務
-2. 作為一個使用者，我想要標記待辦事項為完成，以便追蹤我的進度
-3. 作為一個使用者，我想要刪除待辦事項，以便移除不再需要的任務
-4. 作為一個使用者，我想要在重新開啟瀏覽器後看到我之前的待辦事項，以便持續追蹤任務
+1. As a user, I want to add todos so that I can record tasks that need to be completed
+2. As a user, I want to mark todos as complete so that I can track my progress
+3. As a user, I want to delete todos so that I can remove tasks that are no longer needed
+4. As a user, I want to see my previous todos after reopening the browser so that I can continue tracking tasks
 
-## 功能需求
+## Functional Requirements
 
-1. **新增待辦事項**
-   - 系統必須提供一個輸入框讓使用者輸入待辦事項內容
-   - 系統必須在使用者按下 Enter 鍵或點擊新增按鈕後，將待辦事項加入列表
-   - 系統必須在新增後清空輸入框
-   - 系統不允許新增空白的待辦事項
+1. **Add Todo Items**
+   - The system must provide an input field for users to enter todo content
+   - The system must add the todo to the list when the user presses Enter or clicks the add button
+   - The system must clear the input field after adding
+   - The system must not allow adding empty todos
 
-2. **顯示待辦事項列表**
-   - 系統必須以列表形式顯示所有待辦事項
-   - 系統必須為每個待辦事項顯示其內容和狀態（完成/未完成）
-   - 系統必須以視覺化方式區分已完成和未完成的事項（如刪除線）
+2. **Display Todo List**
+   - The system must display all todos in a list format
+   - The system must show content and status (completed/incomplete) for each todo
+   - The system must visually distinguish between completed and incomplete items (e.g., strikethrough)
 
-3. **標記完成狀態**
-   - 系統必須為每個待辦事項提供一個勾選框或點擊區域
-   - 系統必須允許使用者切換待辦事項的完成狀態
-   - 系統必須即時更新視覺呈現以反映狀態變化
+3. **Mark Completion Status**
+   - The system must provide a checkbox or clickable area for each todo
+   - The system must allow users to toggle the completion status of todos
+   - The system must immediately update the visual presentation to reflect status changes
 
-4. **刪除待辦事項**
-   - 系統必須為每個待辦事項提供刪除按鈕或選項
-   - 系統必須在使用者確認後永久移除該待辦事項
-   - 系統必須即時更新列表顯示
+4. **Delete Todo Items**
+   - The system must provide a delete button or option for each todo
+   - The system must permanently remove the todo after user confirmation
+   - The system must immediately update the list display
 
-5. **資料持久化**
-   - 系統必須使用瀏覽器的 localStorage 儲存所有待辦事項
-   - 系統必須在頁面載入時自動讀取並顯示儲存的待辦事項
-   - 系統必須在每次資料變更時自動儲存
+5. **Data Persistence**
+   - The system must use browser localStorage to store all todos
+   - The system must automatically read and display stored todos on page load
+   - The system must automatically save after each data change
 
-## 非目標（超出範圍）
+## Non-Goals (Out of Scope)
 
-- 多使用者支援或使用者認證
-- 待辦事項的編輯功能（只能刪除後重新新增）
-- 分類、標籤或優先級功能
-- 截止日期或提醒功能
-- 搜尋、篩選或排序功能
-- 資料匯出/匯入功能
-- 主題切換或自訂樣式
-- 行動裝置優化或 PWA 功能
-- 後端 API 或雲端同步
+- Multi-user support or user authentication
+- Todo editing functionality (can only delete and re-add)
+- Categories, tags, or priority features
+- Due dates or reminder features
+- Search, filter, or sort functionality
+- Data export/import features
+- Theme switching or custom styling
+- Mobile optimization or PWA features
+- Backend API or cloud sync
 
-## 設計考量
+## Design Considerations
 
-### UI/UX 建議
-- **風格**：採用極簡主義設計，減少視覺干擾
-- **配色**：使用中性色調（黑、白、灰）為主，可加入一個強調色
-- **字體**：使用系統預設字體，確保跨平台一致性
-- **佈局**：
-  - 頂部：應用程式標題
-  - 中間上方：輸入區域（輸入框 + 新增按鈕）
-  - 中間下方：待辦事項列表
-  - 保持適當的留白和間距
+### UI/UX Recommendations
+- **Style**: Adopt minimalist design to reduce visual distractions
+- **Color Scheme**: Use neutral colors (black, white, gray) with one accent color
+- **Font**: Use system default fonts to ensure cross-platform consistency
+- **Layout**:
+  - Top: Application title
+  - Upper middle: Input area (input field + add button)
+  - Lower middle: Todo list
+  - Maintain appropriate whitespace and spacing
 
-### 互動設計
-- 所有操作應有即時視覺回饋
-- 刪除操作可考慮加入簡單的確認機制（如雙擊刪除）
-- 支援鍵盤操作（Enter 新增、Tab 導航）
+### Interaction Design
+- All operations should have immediate visual feedback
+- Delete operations may include simple confirmation mechanism (e.g., double-click to delete)
+- Support keyboard operations (Enter to add, Tab navigation)
 
-## 技術考量
+## Technical Considerations
 
-1. **框架選擇**：使用 Vite + React + TypeScript
-2. **狀態管理**：
-   - 使用 React 的 `useState` Hook 管理待辦事項列表
-   - 使用 `useEffect` Hook 處理 localStorage 的讀取和儲存
-   - 不需要 Redux 或其他複雜的狀態管理方案
-3. **組件架構**：
-   - `App.tsx`：主要應用程式組件
-   - `TodoInput.tsx`：處理新增待辦事項的輸入組件
-   - `TodoList.tsx`：顯示待辦事項列表的組件
-   - `TodoItem.tsx`：單一待辦事項的組件
-4. **樣式方案**：使用簡單的 CSS Modules 或內聯樣式
-5. **資料結構**：
+1. **Framework Choice**: Use Vite + React + TypeScript
+2. **State Management**:
+   - Use React's `useState` Hook to manage todo list
+   - Use `useEffect` Hook to handle localStorage read and write
+   - No need for Redux or other complex state management solutions
+3. **Component Architecture**:
+   - `App.tsx`: Main application component
+   - `TodoInput.tsx`: Input component for adding todos
+   - `TodoList.tsx`: Component for displaying todo list
+   - `TodoItem.tsx`: Component for individual todo items
+4. **Styling Solution**: Use simple CSS Modules or inline styles
+5. **Data Structure**:
    ```typescript
    interface Todo {
      id: string;
@@ -97,17 +97,17 @@
      createdAt: number;
    }
    ```
-6. **localStorage key**：使用明確的命名如 `simple-todo-items`
+6. **localStorage key**: Use clear naming like `simple-todo-items`
 
-## 成功指標
+## Success Metrics
 
-1. 在 Chrome 瀏覽器上正常運作
-2. 完成所有基本功能（新增、刪除、標記完成）
-3. 資料能正確儲存到 localStorage
+1. Works properly on Chrome browser
+2. All basic features completed (add, delete, mark complete)
+3. Data correctly saved to localStorage
 
-## 開放問題
+## Open Questions
 
-1. 是否需要在待辦事項數量達到一定程度時加入分頁或虛擬滾動？
-2. 刪除操作是否需要確認步驟，還是提供撤銷功能？
-3. 是否需要顯示待辦事項的建立時間？
-4. 當 localStorage 達到容量限制時的處理策略？
+1. Should pagination or virtual scrolling be added when todos reach a certain quantity?
+2. Should delete operations require confirmation or provide undo functionality?
+3. Should todo creation time be displayed?
+4. What's the handling strategy when localStorage reaches capacity limit?

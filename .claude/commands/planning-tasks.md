@@ -1,127 +1,127 @@
-# 規則：從 PRD 規劃任務清單
+# Rule: Plan Task List from PRD
 
-## 目標
+## Goal
 
-指導 AI 助手根據現有的產品需求文件 (PRD) 創建詳細的、逐步的任務規劃，並使用 Claude Code 的 Todo 系統來追蹤進度。此指令會分析 PRD 並產生結構化的任務清單，同時建立驗收條件檔案。
+Guide the AI assistant to create a detailed, step-by-step task plan based on an existing Product Requirements Document (PRD) and use Claude Code's Todo system to track progress. This command analyzes the PRD and generates a structured task list while creating acceptance criteria files.
 
-## 流程
+## Process
 
-1.  **接收 PRD 參考：** 使用者向 AI 指出特定的 PRD 檔案或提供 PRD 所在目錄路徑
-2.  **分析 PRD：** AI 讀取並分析指定 PRD 的功能需求、使用者故事和其他部分
-3.  **撰寫 Gherkin 驗收條件：** 使用 Gherkin 語法撰寫整個 PRD 的高階驗收條件，並儲存為 `acceptance.feature` 檔案在 PRD 相同目錄
-4.  **階段 1：產生父任務：** 根據 PRD 分析和 Gherkin 驗收條件，產生實現功能所需的主要高層級任務（約 5-7 個）
-5.  **使用 Todo 系統：** 將產生的任務加入到 Claude Code 的 Todo 清單中，設定適當的優先級
-6.  **等待確認：** 向使用者展示高層級任務，詢問是否需要分解為更詳細的子任務
-7.  **階段 2：產生子任務（可選）：** 如果使用者需要，將每個父任務分解為更小的、可操作的子任務
-8.  **識別相關檔案：** 根據任務和 PRD，識別需要創建或修改的潛在檔案
-9.  **儲存實作計畫：** 將完整的任務清單、技術細節和檔案追蹤資訊儲存為 `implementation-plan.md` 檔案在 PRD 相同目錄
+1. **Receive PRD Reference:** User points the AI to a specific PRD file or provides the directory path where the PRD is located
+2. **Analyze PRD:** AI reads and analyzes the functional requirements, user stories, and other sections of the specified PRD
+3. **Write Gherkin Acceptance Criteria:** Write high-level acceptance criteria for the entire PRD using Gherkin syntax and save as `acceptance.feature` file in the same directory as the PRD
+4. **Phase 1: Generate Parent Tasks:** Based on PRD analysis and Gherkin acceptance criteria, generate the main high-level tasks needed to implement the feature (approximately 5-7)
+5. **Use Todo System:** Add the generated tasks to Claude Code's Todo list with appropriate priorities
+6. **Wait for Confirmation:** Show the high-level tasks to the user and ask if they need to be broken down into more detailed subtasks
+7. **Phase 2: Generate Subtasks (Optional):** If the user requests, break down each parent task into smaller, actionable subtasks
+8. **Identify Related Files:** Based on tasks and PRD, identify potential files that need to be created or modified
+9. **Save Implementation Plan:** Save the complete task list, technical details, and file tracking information as `implementation-plan.md` file in the same directory as the PRD
 
-## Todo 任務格式
+## Todo Task Format
 
-在 Claude Code 的 Todo 系統中，任務應該包含：
+In Claude Code's Todo system, tasks should include:
 
-- **任務內容**：清晰描述要完成的工作
-- **優先級**：
-  - `high`：核心功能實作
-  - `medium`：輔助功能或整合工作
-  - `low`：優化或文檔工作
-- **狀態**：
-  - `pending`：尚未開始
-  - `in_progress`：正在進行（一次只能有一個）
-  - `completed`：已完成
+- **Task Content**: Clear description of the work to be completed
+- **Priority**:
+  - `high`: Core feature implementation
+  - `medium`: Supporting features or integration work
+  - `low`: Optimization or documentation work
+- **Status**:
+  - `pending`: Not yet started
+  - `in_progress`: Currently working on (only one at a time)
+  - `completed`: Finished
 
-## 任務範例
+## Task Examples
 
-基於 PRD 分析，Todo 清單可能包含：
+Based on PRD analysis, the Todo list might include:
 
 ```
-1. [高優先級] 實作資料模型和資料庫結構
-2. [高優先級] 建立核心 API 端點
-3. [中優先級] 開發前端 UI 組件
-4. [中優先級] 實作狀態管理邏輯
-5. [低優先級] 加入錯誤處理和驗證
-6. [高優先級] 執行驗收測試
+1. [High Priority] Implement data model and database structure
+2. [High Priority] Create core API endpoints
+3. [Medium Priority] Develop frontend UI components
+4. [Medium Priority] Implement state management logic
+5. [Low Priority] Add error handling and validation
+6. [High Priority] Execute acceptance tests
 ```
 
-## Gherkin 驗收條件檔案
+## Gherkin Acceptance Criteria File
 
-驗收條件應使用 Gherkin 語法撰寫，並儲存為 `acceptance.feature` 檔案在與 PRD 相同的目錄中：
+Acceptance criteria should be written using Gherkin syntax and saved as `acceptance.feature` file in the same directory as the PRD:
 
-- **檔案位置：** 與 PRD 相同目錄（例如：`/spec/YYYYMMDD-[功能SLUG]/acceptance.feature`）
-- **檔案格式：** 
+- **File Location:** Same directory as PRD (e.g., `/spec/YYYYMMDD-[feature-slug]/acceptance.feature`)
+- **File Format:** 
 
 ```gherkin
-Feature: [功能名稱]
-As a [使用者角色]
-I want to [想要做的事]
-So that [期望的結果]
+Feature: [Feature Name]
+As a [user role]
+I want to [desired action]
+So that [expected outcome]
 
-Scenario: [場景名稱]
-Given [前置條件]
-When [執行動作]
-Then [預期結果]
-And [額外驗證]
+Scenario: [Scenario Name]
+Given [precondition]
+When [action performed]
+Then [expected result]
+And [additional validation]
 
-Scenario: [另一個場景名稱]
-Given [前置條件]
-When [執行動作]
-Then [預期結果]
+Scenario: [Another Scenario Name]
+Given [precondition]
+When [action performed]
+Then [expected result]
 
-# 可以包含多個 Scenario 來涵蓋不同的使用情境
-# 確保涵蓋核心功能和關鍵使用者流程
+# Can include multiple Scenarios to cover different use cases
+# Ensure coverage of core functionality and key user flows
 ```
 
-這個檔案將用於後續的驗收測試執行。
+This file will be used for subsequent acceptance test execution.
 
-## 相關檔案追蹤
+## Related File Tracking
 
-在規劃任務時，應同時識別：
+When planning tasks, simultaneously identify:
 
-- 需要創建的新檔案
-- 需要修改的現有檔案
-- 測試檔案位置
-- 配置檔案更新
+- New files to be created
+- Existing files to be modified
+- Test file locations
+- Configuration file updates
 
-## 實作順序建議
+## Implementation Order Suggestions
 
-1. **實用函數**：輔助函數和計算
-2. **核心服務**：業務邏輯和資料處理
-3. **API 整合**：外部服務通訊
-4. **狀態管理**：應用程式狀態邏輯
-5. **UI 組件**：使用者介面元素
-6. **整合測試**：驗收條件執行
+1. **Utility Functions**: Helper functions and calculations
+2. **Core Services**: Business logic and data processing
+3. **API Integration**: External service communication
+4. **State Management**: Application state logic
+5. **UI Components**: User interface elements
+6. **Integration Tests**: Acceptance criteria execution
 
-## 驗收執行方式
+## Acceptance Execution Methods
 
-驗收測試可透過以下方式執行：
+Acceptance tests can be executed through the following methods:
 
-### UI 操作驗收
-- 當涉及使用者介面操作時（點擊、填寫表單、頁面導航）
-- 使用適合的工具自動化執行瀏覽器操作
-- 驗證頁面元素、內容變化、狀態更新
+### UI Operation Acceptance
+- When involving user interface operations (clicks, form filling, page navigation)
+- Use appropriate tools to automate browser operations
+- Verify page elements, content changes, state updates
 
-### 指令執行驗收
-- 當涉及命令列操作或系統行為時
-- 透過終端指令執行相關命令
-- 檢查執行結果是否符合預期
+### Command Execution Acceptance
+- When involving command line operations or system behavior
+- Execute relevant commands through terminal
+- Check if execution results meet expectations
 
-## 使用方式
+## Usage
 
-1. 使用者提供 PRD 檔案路徑
-2. AI 分析 PRD 並產生任務規劃
-3. 建立 `acceptance.feature` 檔案在 PRD 相同目錄
-4. 將任務加入 Todo 系統
-5. 建立 `implementation-plan.md` 檔案記錄詳細的實作計畫
-6. 開發者按照 Todo 清單逐步完成實作
-7. 每完成一個任務就標記為完成
-8. 最後執行 `acceptance.feature` 中的驗收測試確認功能完整性
+1. User provides PRD file path
+2. AI analyzes PRD and generates task plan
+3. Create `acceptance.feature` file in the same directory as PRD
+4. Add tasks to Todo system
+5. Create `implementation-plan.md` file to record detailed implementation plan
+6. Developers complete implementation step by step following Todo list
+7. Mark each task as completed when finished
+8. Finally execute acceptance tests in `acceptance.feature` to confirm feature completeness
 
-## 注意事項
+## Notes
 
-- 專注於可執行的具體任務
-- 避免過度分解任務（保持在合理的粒度）
-- 確保任務之間的依賴關係清晰
-- 使用 Todo 系統的優勢來即時追蹤進度
-- 驗收條件檔案 (`acceptance.feature`) 必須儲存在與 PRD 相同的目錄中
-- 實作計畫檔案 (`implementation-plan.md`) 包含完整的任務細節和技術資訊，也儲存在與 PRD 相同目錄
-- Todo 清單用於追蹤進度，驗收條件檔案用於最終驗證，實作計畫檔案用於記錄技術細節
+- Focus on concrete, actionable tasks
+- Avoid over-decomposing tasks (maintain reasonable granularity)
+- Ensure clear dependencies between tasks
+- Use Todo system advantages for real-time progress tracking
+- Acceptance criteria file (`acceptance.feature`) must be saved in the same directory as PRD
+- Implementation plan file (`implementation-plan.md`) contains complete task details and technical information, also saved in the same directory as PRD
+- Todo list is for tracking progress, acceptance criteria file is for final validation, implementation plan file is for recording technical details

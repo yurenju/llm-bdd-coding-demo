@@ -1,59 +1,59 @@
-# 規則：產生產品需求文件 (PRD)
+# Rule: Generate Product Requirements Document (PRD)
 
-## 目標
+## Goal
 
-指導 AI 助手根據使用者的初始提示，創建詳細的 Markdown 格式產品需求文件 (PRD)。PRD 應該清晰、可操作，適合初級開發者理解和實現功能。
+Guide the AI assistant to create a detailed Product Requirements Document (PRD) in Markdown format based on the user's initial prompt. The PRD should be clear, actionable, and suitable for junior developers to understand and implement the functionality.
 
-## 流程
+## Process
 
-1.  **接收初始提示：** 使用者提供新功能或功能性的簡要描述或請求。
-2.  **取得今天日期：** 根據作業系統使用對應的命令取得正確的日期格式（Windows: `powershell -Command "Get-Date -Format 'yyyyMMdd'"` / Linux/macOS: `date +%Y%m%d`）。
-3.  **詢問澄清問題：** 在撰寫 PRD 之前，AI _必須_ 詢問澄清問題以收集足夠的細節。目標是理解功能的「什麼」和「為什麼」，而不一定是「如何」（這將由開發者來解決）。
-4.  **產生功能 SLUG：** 根據功能名稱生成簡短的識別符（例如：user-profile-editing、payment-gateway-integration）。
-5.  **產生 PRD：** 根據初始提示和使用者對澄清問題的回答，使用下面概述的結構產生 PRD。
-6.  **儲存 PRD：** 將產生的文件直接儲存為 `/spec/YYYYMMDD-[功能SLUG]/prd.md`（使用步驟 2 取得的日期）。
+1. **Receive Initial Prompt:** User provides a brief description or request for a new feature or functionality.
+2. **Get Today's Date:** Use the appropriate command based on the operating system to get the correct date format (Windows: `powershell -Command "Get-Date -Format 'yyyyMMdd'"` / Linux/macOS: `date +%Y%m%d`).
+3. **Ask Clarifying Questions:** Before writing the PRD, the AI _must_ ask clarifying questions to gather sufficient details. The goal is to understand the "what" and "why" of the feature, not necessarily the "how" (which will be solved by developers).
+4. **Generate Feature SLUG:** Generate a short identifier based on the feature name (e.g., user-profile-editing, payment-gateway-integration).
+5. **Generate PRD:** Based on the initial prompt and user's answers to clarifying questions, generate the PRD using the structure outlined below.
+6. **Save PRD:** Save the generated document directly as `/spec/YYYYMMDD-[feature-slug]/prd.md` (using the date obtained in step 2).
 
-## 澄清問題（範例）
+## Clarifying Questions (Examples)
 
-AI 應該根據提示調整其問題，但以下是一些要探索的常見領域：
+The AI should adapt its questions based on the prompt, but here are some common areas to explore:
 
-- **問題/目標：** 「這個功能為使用者解決了什麼問題？」或「我們想要透過這個功能達成的主要目標是什麼？」
-- **目標使用者：** 「這個功能的主要使用者是誰？」
-- **核心功能：** 「您能描述使用者應該能夠使用這個功能執行的關鍵操作嗎？」
-- **使用者故事：** 「您能提供一些使用者故事嗎？（例如，作為 [使用者類型]，我想要 [執行操作] 以便 [獲得好處]。）」
-- **驗收標準：** 「我們如何知道這個功能已成功實現？關鍵的成功標準是什麼？」
-- **範圍/邊界：** 「這個功能有任何特定的 _不應該_ 做的事情（非目標）嗎？」
-- **資料需求：** 「這個功能需要顯示或操作什麼樣的資料？」
-- **邊緣情況：** 「我們應該考慮任何潛在的邊緣情況或錯誤條件嗎？」
+- **Problem/Goal:** "What problem does this feature solve for users?" or "What is the main goal we want to achieve with this feature?"
+- **Target Users:** "Who are the primary users of this feature?"
+- **Core Functionality:** "Can you describe the key operations users should be able to perform with this feature?"
+- **User Stories:** "Can you provide some user stories? (e.g., As a [user type], I want to [perform action] so that [get benefit].)"
+- **Acceptance Criteria:** "How will we know this feature is successfully implemented? What are the key success criteria?"
+- **Scope/Boundaries:** "Are there any specific things this feature _should not_ do (non-goals)?"
+- **Data Requirements:** "What kind of data does this feature need to display or manipulate?"
+- **Edge Cases:** "Are there any potential edge cases or error conditions we should consider?"
 
-## PRD 結構
+## PRD Structure
 
-產生的 PRD 應該包含以下部分：
+The generated PRD should include the following sections:
 
-1.  **介紹/概述：** 簡要描述功能及其解決的問題。陳述目標。
-2.  **目標：** 列出此功能的具體、可衡量的目標。
-3.  **使用者故事：** 詳細描述使用者敘述，說明功能使用和好處。
-4.  **功能需求：** 列出功能必須具備的特定功能性。使用清晰、簡潔的語言（例如，「系統必須允許使用者上傳個人資料圖片。」）。為這些需求編號。
-5.  **非目標（超出範圍）：** 清楚說明此功能將 _不_ 包含的內容以管理範圍。
-6.  **設計考量（可選）：** 連結到模型、描述 UI/UX 需求，或提及相關組件/樣式（如適用）。
-7.  **技術考量（可選）：** 提及任何已知的技術限制、依賴性或建議（例如，「應與現有的認證模組整合」）。
-8.  **成功指標：** 如何衡量此功能的成功？（例如，「將使用者參與度提高 10%」、「減少與 X 相關的支援票證」）。
-9.  **開放問題：** 列出任何剩餘問題或需要進一步澄清的領域。
+1. **Introduction/Overview:** Briefly describe the feature and the problem it solves. State the goals.
+2. **Objectives:** List specific, measurable objectives for this feature.
+3. **User Stories:** Detail user narratives explaining feature usage and benefits.
+4. **Functional Requirements:** List specific functionalities the feature must have. Use clear, concise language (e.g., "The system must allow users to upload profile pictures."). Number these requirements.
+5. **Non-Goals (Out of Scope):** Clearly state what this feature will _not_ include to manage scope.
+6. **Design Considerations (Optional):** Link to mockups, describe UI/UX requirements, or mention related components/styles (if applicable).
+7. **Technical Considerations (Optional):** Mention any known technical constraints, dependencies, or recommendations (e.g., "Should integrate with existing authentication module").
+8. **Success Metrics:** How will the success of this feature be measured? (e.g., "Increase user engagement by 10%", "Reduce support tickets related to X").
+9. **Open Questions:** List any remaining questions or areas needing further clarification.
 
-## 目標受眾
+## Target Audience
 
-假設 PRD 的主要讀者是 **初級開發者**。因此，需求應該明確、無歧義，並盡可能避免專業術語。提供足夠的細節讓他們理解功能的目的和核心邏輯。
+Assume the primary readers of the PRD are **junior developers**. Therefore, requirements should be clear, unambiguous, and avoid jargon as much as possible. Provide enough detail for them to understand the feature's purpose and core logic.
 
-## 輸出
+## Output
 
-- **格式：** Markdown (`.md`)
-- **位置：** `/spec/YYYYMMDD-[功能SLUG]/`（YYYYMMDD 為當天日期格式）
-- **檔案名稱：** `prd.md`
+- **Format:** Markdown (`.md`)
+- **Location:** `/spec/YYYYMMDD-[feature-slug]/` (YYYYMMDD is today's date format)
+- **Filename:** `prd.md`
 
-## 技術實作注意事項
+## Technical Implementation Notes
 
-### 日期格式獲取
-在開始創建 PRD 之前，先使用以下命令獲取今天的日期：
+### Date Format Retrieval
+Before starting to create the PRD, first use the following command to get today's date:
 
 **Windows:**
 ```powershell
@@ -65,17 +65,17 @@ powershell -Command "Get-Date -Format 'yyyyMMdd'"
 date +%Y%m%d
 ```
 
-### 目錄命名規範
-- 格式：`spec/YYYYMMDD-功能SLUG/`
-- 範例：如果今天是 2025 年 7 月 9 日，則目錄為 `spec/20250709-keyboard-movement/`
-- 功能SLUG 應使用小寫字母和連字符
-- 使用 `edit_file` 工具時，直接指定完整路徑，工具會自動創建必要的目錄
+### Directory Naming Convention
+- Format: `spec/YYYYMMDD-feature-slug/`
+- Example: If today is July 9, 2025, the directory would be `spec/20250709-keyboard-movement/`
+- Feature slug should use lowercase letters and hyphens
+- When using the `edit_file` tool, specify the full path directly; the tool will automatically create necessary directories
 
-## 最終指示
+## Final Instructions
 
-1. 不要開始實現 PRD
-2. 確保詢問使用者澄清問題
-3. 採用使用者對澄清問題的回答來改進 PRD
-4. **根據作業系統使用對應的日期命令取得正確的日期格式**
-5. **使用 edit_file 工具時直接指定完整路徑，不需要手動創建目錄**
-6. 完成後，告知使用者可以使用 planning-tasks 指令來產生對應的任務清單
+1. Do not start implementing the PRD
+2. Ensure to ask user clarifying questions
+3. Adopt user's answers to clarifying questions to refine the PRD
+4. **Use the appropriate date command based on operating system to get the correct date format**
+5. **When using the edit_file tool, specify the full path directly; no need to manually create directories**
+6. After completion, inform the user that they can use the planning-tasks command to generate the corresponding task list

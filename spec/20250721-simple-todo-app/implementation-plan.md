@@ -1,40 +1,40 @@
-# 實作計畫 - 簡易 Todo Web App
+# Implementation Plan - Simple Todo Web App
 
-## 概述
-本文件詳細說明簡易 Todo Web App 的實作計畫，包含任務分解、技術細節和檔案結構規劃。
+## Overview
+This document details the implementation plan for the Simple Todo Web App, including task breakdown, technical details, and file structure planning.
 
-## 高層級任務清單
+## High-Level Task List
 
-### 1. 初始化 Vite + React + TypeScript 專案並設定基本架構
-**優先級**：高
-**預估時間**：15 分鐘
-**相關檔案**：
-- 新建：`package.json`, `tsconfig.json`, `vite.config.ts`
-- 新建：`index.html`, `src/main.tsx`
-**技術細節**：
-- 在臨時目錄創建專案：
+### 1. Initialize Vite + React + TypeScript project and set up basic structure
+**Priority**: High
+**Estimated Time**: 15 minutes
+**Related Files**:
+- Create: `package.json`, `tsconfig.json`, `vite.config.ts`
+- Create: `index.html`, `src/main.tsx`
+**Technical Details**:
+- Create project in temporary directory:
   ```bash
   cd /tmp
   npm create vite@latest todo-app -- --template react-ts
   cd todo-app
   npm install
   ```
-- 將專案檔案移動到目標目錄：
+- Move project files to target directory:
   ```bash
-  # 將所有檔案（包含隱藏檔）複製到專案根目錄
-  cp -r /tmp/todo-app/* /tmp/todo-app/.[^.]* [專案根目錄]/
+  # Copy all files (including hidden files) to project root
+  cp -r /tmp/todo-app/* /tmp/todo-app/.[^.]* [project-root]/
   ```
-- 清理臨時目錄：
+- Clean up temporary directory:
   ```bash
   rm -rf /tmp/todo-app
   ```
 
-### 2. 建立 Todo 資料模型和 TypeScript 介面定義
-**優先級**：高  
-**預估時間**：10 分鐘
-**相關檔案**：
-- 新建：`src/types/Todo.ts`
-**技術細節**：
+### 2. Create Todo data model and TypeScript interface definitions
+**Priority**: High  
+**Estimated Time**: 10 minutes
+**Related Files**:
+- Create: `src/types/Todo.ts`
+**Technical Details**:
 ```typescript
 interface Todo {
   id: string;
@@ -44,74 +44,74 @@ interface Todo {
 }
 ```
 
-### 3. 實作 TodoInput 輸入組件（包含新增功能）
-**優先級**：高
-**預估時間**：30 分鐘
-**相關檔案**：
-- 新建：`src/components/TodoInput.tsx`
-- 新建：`src/components/TodoInput.module.css` (可選)
-**功能需求**：
-- 輸入框和新增按鈕
-- Enter 鍵監聽
-- 空白輸入驗證
-- 清空輸入框邏輯
+### 3. Implement TodoInput component (including add functionality)
+**Priority**: High
+**Estimated Time**: 30 minutes
+**Related Files**:
+- Create: `src/components/TodoInput.tsx`
+- Create: `src/components/TodoInput.module.css` (optional)
+**Functional Requirements**:
+- Input field and add button
+- Enter key listener
+- Empty input validation
+- Clear input field logic
 
-### 4. 實作 TodoItem 組件（顯示、完成狀態切換、刪除功能）
-**優先級**：高
-**預估時間**：30 分鐘
-**相關檔案**：
-- 新建：`src/components/TodoItem.tsx`
-- 新建：`src/components/TodoItem.module.css` (可選)
-**功能需求**：
-- 顯示待辦事項文字
-- 勾選框切換完成狀態
-- 刪除按鈕
-- 完成狀態的視覺呈現（刪除線）
+### 4. Implement TodoItem component (display, toggle completion, delete)
+**Priority**: High
+**Estimated Time**: 30 minutes
+**Related Files**:
+- Create: `src/components/TodoItem.tsx`
+- Create: `src/components/TodoItem.module.css` (optional)
+**Functional Requirements**:
+- Display todo text
+- Checkbox to toggle completion status
+- Delete button
+- Visual presentation of completion status (strikethrough)
 
-### 5. 實作 TodoList 組件和整體列表管理
-**優先級**：中
-**預估時間**：20 分鐘
-**相關檔案**：
-- 新建：`src/components/TodoList.tsx`
-- 新建：`src/components/TodoList.module.css` (可選)
-**功能需求**：
-- 渲染待辦事項列表
-- 傳遞狀態更新回調函數
+### 5. Implement TodoList component and overall list management
+**Priority**: Medium
+**Estimated Time**: 20 minutes
+**Related Files**:
+- Create: `src/components/TodoList.tsx`
+- Create: `src/components/TodoList.module.css` (optional)
+**Functional Requirements**:
+- Render todo list
+- Pass state update callbacks
 
-### 6. 實作 localStorage 資料持久化機制
-**優先級**：高
-**預估時間**：25 分鐘
-**相關檔案**：
-- 新建：`src/hooks/useLocalStorage.ts` (可選)
-- 修改：`src/App.tsx`
-**技術細節**：
-- 在 App 組件中使用 useEffect 讀取 localStorage
-- 每次狀態變更時更新 localStorage
-- 使用 JSON.stringify/parse 處理資料
+### 6. Implement localStorage data persistence mechanism
+**Priority**: High
+**Estimated Time**: 25 minutes
+**Related Files**:
+- Create: `src/hooks/useLocalStorage.ts` (optional)
+- Modify: `src/App.tsx`
+**Technical Details**:
+- Use useEffect in App component to read localStorage
+- Update localStorage on each state change
+- Use JSON.stringify/parse for data handling
 
-### 7. 套用極簡風格的 CSS 樣式設計
-**優先級**：中
-**預估時間**：30 分鐘
-**相關檔案**：
-- 修改：`src/App.css`
-- 新建/修改：各組件的 CSS 檔案
-**設計原則**：
-- 中性色調（黑、白、灰）
-- 系統預設字體
-- 適當留白和間距
-- 簡潔的互動回饋
+### 7. Apply minimalist CSS styling
+**Priority**: Medium
+**Estimated Time**: 30 minutes
+**Related Files**:
+- Modify: `src/App.css`
+- Create/Modify: CSS files for each component
+**Design Principles**:
+- Neutral colors (black, white, gray)
+- System default fonts
+- Appropriate whitespace and spacing
+- Clean interaction feedback
 
-### 8. 執行驗收測試確認所有功能正常運作
-**優先級**：高
-**預估時間**：20 分鐘
-**相關檔案**：
-- 參考：`acceptance.feature`
-**測試重點**：
-- 手動測試所有 Gherkin 場景
-- 確認 localStorage 持久化
-- 驗證使用者互動流程
+### 8. Execute acceptance tests to confirm all features work
+**Priority**: High
+**Estimated Time**: 20 minutes
+**Related Files**:
+- Reference: `acceptance.feature`
+**Test Focus**:
+- Manually test all Gherkin scenarios
+- Confirm localStorage persistence
+- Validate user interaction flows
 
-## 檔案結構規劃
+## File Structure Planning
 
 ```
 project-root/
@@ -133,45 +133,45 @@ project-root/
 │   │   ├── TodoItem.tsx
 │   │   └── TodoItem.module.css
 │   └── hooks/
-│       └── useLocalStorage.ts (可選)
+│       └── useLocalStorage.ts (optional)
 ```
 
-## 實作順序建議
+## Implementation Order Suggestions
 
-1. **階段一：專案初始化**
-   - 建立專案結構
-   - 定義資料模型
+1. **Phase 1: Project Initialization**
+   - Create project structure
+   - Define data model
 
-2. **階段二：核心組件開發**
-   - TodoInput 組件
-   - TodoItem 組件
-   - TodoList 組件
+2. **Phase 2: Core Component Development**
+   - TodoInput component
+   - TodoItem component
+   - TodoList component
 
-3. **階段三：狀態管理與持久化**
-   - App 組件整合
-   - localStorage 實作
+3. **Phase 3: State Management & Persistence**
+   - App component integration
+   - localStorage implementation
 
-4. **階段四：美化與測試**
-   - CSS 樣式套用
-   - 驗收測試執行
+4. **Phase 4: Styling & Testing**
+   - CSS styling
+   - Acceptance test execution
 
-## 技術注意事項
+## Technical Considerations
 
-1. **狀態管理**：
-   - 所有狀態集中在 App 組件
-   - 透過 props 傳遞資料和回調函數
+1. **State Management**:
+   - All state centralized in App component
+   - Pass data and callbacks through props
 
-2. **TypeScript 使用**：
-   - 為所有 props 定義介面
-   - 使用嚴格模式確保類型安全
+2. **TypeScript Usage**:
+   - Define interfaces for all props
+   - Use strict mode to ensure type safety
 
-3. **效能考量**：
-   - 使用 React.memo 優化重複渲染（如需要）
-   - 使用 key 屬性正確處理列表渲染
+3. **Performance Considerations**:
+   - Use React.memo to optimize re-renders (if needed)
+   - Use key attribute for proper list rendering
 
-4. **錯誤處理**：
-   - localStorage 讀寫異常處理
-   - 輸入驗證
+4. **Error Handling**:
+   - localStorage read/write exception handling
+   - Input validation
 
-## 預估總時間
-約 3-4 小時完成所有實作和測試
+## Estimated Total Time
+Approximately 3-4 hours to complete all implementation and testing
